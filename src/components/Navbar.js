@@ -1,11 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+
+ /*The NavLink component provides a declarative way to navigate around the 
+ application. It is similar to the Link component, except it can apply an 
+ active style to the link if it is active. */
 
 export const Navbar = () => {
+  const navLinkStyles = ({ isActive }) => {
+      return {
+        fontWeight : isActive ? 'bold' : 'normal',
+        textDecoration : isActive ? 'none' : 'underline',
+      }
+  }
   return (
-    <nav>
-         <Link to='/'>Home</Link>
-         <Link to='/about'>About</Link>
+    <nav className='primary-nav'>
+         <NavLink style={navLinkStyles} to='/'>Home</NavLink>
+         <NavLink style={navLinkStyles} to='/about'>About</NavLink>
+         <NavLink style={navLinkStyles} to='/products'>Products</NavLink>
     </nav>
   )
 }
